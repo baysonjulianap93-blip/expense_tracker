@@ -1,0 +1,2 @@
+# Configuration (database credentials) is never served directly
+Require all denied

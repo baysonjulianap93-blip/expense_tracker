@@ -1,0 +1,18 @@
+# Local configuration and credentials
+/.env
+/.env.*
+/config/database.php
+
+# Local database dump may contain account and financial records
+/database.sql
+
+# Generated dependencies and runtime files
+/vendor/
+/node_modules/
+*.log
+/logs/
+/cache/
+
+# Operating-system files
+.DS_Store
+Thumbs.db

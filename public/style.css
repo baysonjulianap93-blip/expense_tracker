@@ -1,0 +1,163 @@
+/* Expense Tracker - minimalist theme on top of Bootstrap 5 */
+
+:root {
+    --cream-white: #FFF9F5;   /* page background */
+    --dark-slate: #344054;    /* text, buttons */
+    --warm-gray: #E7E5E4;     /* borders, table headers */
+    --white: #FFFFFF;         /* navbar, cards */
+    --accent: #237A70;        /* highlights: links, progress, focus */
+    --income: #21865B;        /* muted green - income only */
+    --expense: #DC5555;       /* muted red - expenses only */
+
+    --slate-rgb: 52, 64, 84;
+    --accent-rgb: 35, 122, 112;
+    --radius: 16px;
+    --shadow: 0 1px 2px rgba(var(--slate-rgb), 0.04), 0 4px 16px rgba(var(--slate-rgb), 0.06);
+
+    /* Make Bootstrap use the palette */
+    --bs-body-color: var(--dark-slate);
+    --bs-emphasis-color: var(--dark-slate);
+    --bs-secondary-color: rgba(var(--slate-rgb), 0.65);
+    --bs-secondary-rgb: var(--slate-rgb);
+    --bs-link-color: var(--accent);
+    --bs-link-color-rgb: var(--accent-rgb);
+    --bs-link-hover-color-rgb: var(--slate-rgb);
+    --bs-border-color: var(--warm-gray);
+    --bs-border-radius: 10px;
+}
+
+body { background: var(--cream-white); }
+h1, h2, h3, h4, h5 { color: var(--dark-slate); }
+.text-secondary { --bs-text-opacity: 0.65; }
+
+/* ---------- Navbar ---------- */
+.navbar {
+    background: var(--cream-white);
+    border-bottom: 1px solid var(--warm-gray);
+    padding: 0.6rem 0;
+    --bs-navbar-nav-link-padding-x: 0.9rem;   /* equal space between links */
+}
+.navbar-brand { color: var(--dark-slate); font-weight: 700; }
+
+/* Text-only links; the active page gets bold text and a thin underline */
+.navbar .nav-link {
+    color: var(--dark-slate);
+    font-weight: 400;
+    text-decoration: underline 2px transparent;
+    text-underline-offset: 8px;
+    transition: text-decoration-color 0.15s ease;
+}
+.navbar .nav-link:hover  { color: var(--dark-slate); text-decoration-color: var(--warm-gray); }
+.navbar .nav-link.active { color: var(--dark-slate); font-weight: 700; text-decoration-color: var(--dark-slate); }
+
+/* ---------- Logo ---------- */
+.brand-logo { height: 34px; }
+.auth-logo  { height: 72px; }
+/* The logo's light-gray parts would vanish on white; a hairline outline keeps them visible */
+.brand-logo, .auth-logo { filter: drop-shadow(0 0 0.5px rgba(var(--slate-rgb), 0.6)); }
+
+/* ---------- Cards ---------- */
+.dashboard-card,
+.section-card,
+.card {
+    background: var(--white);
+    border: 1px solid var(--warm-gray) !important;
+    border-radius: var(--radius) !important;
+    box-shadow: var(--shadow) !important;
+}
+.dashboard-card { padding: 24px; height: 100%; }
+.section-card   { padding: 24px; }
+
+.card-label {
+    color: rgba(var(--slate-rgb), 0.6);
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+}
+.card-value { font-size: 30px; font-weight: 700; margin-top: 10px; }
+
+/* Income in green, expenses in red (used for amounts and the Type column) */
+.income,  .table td.income  { color: var(--income); }
+.expense, .table td.expense { color: var(--expense); }
+
+/* ---------- Buttons ---------- */
+.btn { border-radius: 10px; font-weight: 500; }
+.btn-primary {
+    --bs-btn-bg: var(--dark-slate);
+    --bs-btn-border-color: var(--dark-slate);
+    --bs-btn-hover-bg: rgba(var(--slate-rgb), 0.9);
+    --bs-btn-hover-border-color: rgba(var(--slate-rgb), 0.9);
+    --bs-btn-active-bg: var(--dark-slate);
+    --bs-btn-active-border-color: var(--dark-slate);
+}
+/* Edit / Delete / Cancel / Logout: white with a gray outline */
+.btn-outline-primary,
+.btn-outline-secondary,
+.btn-outline-danger,
+.btn-outline-light {
+    --bs-btn-color: var(--dark-slate);
+    --bs-btn-border-color: var(--warm-gray);
+    --bs-btn-hover-color: var(--white);
+    --bs-btn-hover-bg: var(--dark-slate);
+    --bs-btn-hover-border-color: var(--dark-slate);
+    --bs-btn-active-bg: var(--dark-slate);
+}
+.btn-outline-primary { --bs-btn-hover-bg: var(--accent); --bs-btn-hover-border-color: var(--accent); }
+
+/* ---------- Forms ---------- */
+.form-label { font-size: 0.875rem; font-weight: 600; }
+.form-control:focus,
+.form-select:focus {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 0.25rem rgba(var(--accent-rgb), 0.15);
+}
+
+/* ---------- Tables ---------- */
+/* Plain tables: white rows, Warm Gray separators, light hover */
+.table {
+    --bs-table-color: var(--dark-slate);
+    --bs-table-border-color: var(--warm-gray);
+    --bs-table-hover-bg: rgba(231, 229, 228, 0.35);
+}
+.table > :not(caption) > * > * { padding: 0.85rem 0.9rem; }
+.table thead th {
+    color: rgba(var(--slate-rgb), 0.7);
+    font-size: 0.875rem;
+    font-weight: 600;
+}
+
+/* ---------- Progress bars ---------- */
+.progress { --bs-progress-bg: var(--warm-gray); border-radius: 999px; }
+.progress-bar { background-color: var(--accent) !important; }
+.dashboard-card .progress-bar.bg-danger { background-color: var(--dark-slate) !important; } /* over budget */
+
+/* ---------- Messages & Auth Notifications: plain text, no box ---------- */
+.alert,
+.auth-message {
+    background: none !important;
+    background-color: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    border-radius: 0 !important;
+    padding: 0 !important;
+    margin-bottom: 1rem;
+    font-size: 0.95rem;
+    font-weight: 500;
+}
+.alert-success,
+.auth-message-success,
+.auth-message.success {
+    color: #198754 !important; /* Green */
+}
+.alert-warning,
+.auth-message-warning,
+.auth-message.warning {
+    color: #ea580c !important; /* Orange */
+}
+.alert-danger,
+.auth-message-error,
+.auth-message.error {
+    color: #dc3545 !important; /* Red */
+}
+.alert .alert-link { color: inherit; }

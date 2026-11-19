@@ -47,14 +47,3 @@ CREATE TABLE `transactions` (
   CONSTRAINT `fk_transactions_users_id` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`),
   CONSTRAINT `transactions_ibfk_1` FOREIGN KEY (`category_id`) REFERENCES `categories` (`category_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
-CREATE TABLE `expenses` (
-  `expense_id` int(11) NOT NULL AUTO_INCREMENT,
-  `user_id` int(11) NOT NULL,
-  `category_id` int(11) DEFAULT NULL,
-  `amount` decimal(10,2) NOT NULL,
-  `description` varchar(255) DEFAULT NULL,
-  `expense_date` date NOT NULL,
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
-  PRIMARY KEY (`expense_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
